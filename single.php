@@ -1,3 +1,13 @@
+<?php
+/**
+ * @package		Naoto
+ * @version		1.0.0
+ * @desc		single.php - Template for single posts		
+ * @author		Anders Norén, except annotated sections below by AFB
+ * @link		https://github.com/techpressrocks/naoto-techpressrocks
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ */
+?>
 <?php get_header(); ?>
 
 <div class="content thin">
@@ -45,16 +55,16 @@
 							
 			<?php elseif ( has_post_thumbnail() ) : ?>
 
-<div class="single-portfoliooverlay featured-media">
-	<div class="ugc-project-single-sharing">
-		<span><a class="ugc-project-single-pinterest" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php echo $image;?>&description=<?php the_title();?>" target="_blank" title="Pin it"></a></span>
-		<span><a class="ugc-project-single-facebook" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>" target="_blank" title="Share on Facebook!"></a></span>	
-		<span><a class="ugc-project-single-twitter" href="http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank" title="Tweet this page on Twitter"></a></span>
-		<span><a class="ugc-project-single-tumblr" href="http://www.tumblr.com/share/link?url=<?php the_permalink(); ?>&name=<?php the_title(); ?>&description=<?php the_title(); ?>" target="_blank" title="Share this page on Tumblr"></a></span>
-		<span><a class="ugc-project-single-google" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"onclick="javascript:window.open(this.href,
-		'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; "title="Share this page on Google+!"></a>
-		</span>
-	</div>			
+			<div class="single-portfoliooverlay featured-media">
+				<div class="naoto-single-sharing">
+					<span><a class="naoto-single-pinterest" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php echo $image;?>&description=<?php the_title();?>" target="_blank" title="Pin it"></a></span>
+					<span><a class="naoto-single-facebook" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>" target="_blank" title="Share on Facebook!"></a></span>	
+					<span><a class="naoto-single-twitter" href="http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank" title="Tweet this page on Twitter"></a></span>
+					<span><a class="naoto-single-tumblr" href="http://www.tumblr.com/share/link?url=<?php the_permalink(); ?>&name=<?php the_title(); ?>&description=<?php the_title(); ?>" target="_blank" title="Share this page on Tumblr"></a></span>
+					<span><a class="naoto-single-google" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"onclick="javascript:window.open(this.href,
+					'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; "title="Share this page on Google+!"></a>
+					</span>
+				</div>			
 	<?php the_post_thumbnail('post-image'); ?>
 </div> <!-- /featured-media -->
 					
@@ -65,7 +75,7 @@
 				
 					<?php 
 				    	$args = array(
-							'before'           => '<div class="clear"></div><p class="page-links"><span class="title">' . __( 'Pages:','fukasawa' ) . '</span>',
+							'before'           => '<div class="clear"></div><p class="page-links"><span class="title">' . __( 'Pages:','naoto' ) . '</span>',
 							'after'            => '</p>',
 							'link_before'      => '<span>',
 							'link_after'       => '</span>',
@@ -76,11 +86,17 @@
 			    	
 			    		wp_link_pages($args); 
 					?>
-				
+					<?php
+					/**
+					* Add output of custom field "cf_uploadername" (see AFB User Image Upload)
+					* @param $uploader_name
+					* @author AFB
+					*/
+					?>				
 					<ul>
 						<li class="post-date"><a href="<?php the_permalink(); ?>"><?php the_date(get_option('date_format')); ?></a></li>
 						<?php if (has_category()) : ?>
-							<li class="post-categories"><?php _e('In','fukasawa'); ?> <?php the_category(', '); ?></li>
+							<li class="post-categories"><?php _e('In','naoto'); ?> <?php the_category(', '); ?></li>
 						<?php endif; ?>
 						<?php if (has_tag()) : ?>
 							<li class="post-tags"><?php the_tags('', ' '); ?></li>
@@ -89,7 +105,7 @@
 							<?php if ( get_post_meta( get_the_ID(), 'cf_uploadername', true ) ) { 
 							$uploader_name = get_post_meta( get_the_ID(), 'cf_uploadername', true );
 							settype($uploader_name, 'string');
-							printf( __( 'Uploaded by: %s', 'fukasawa' ), $uploader_name);
+							printf( __( 'Uploaded by: %s', 'naoto' ), $uploader_name);
 							}
 						?>		
 						</li>
@@ -133,16 +149,16 @@
 				<?php
 				if (!empty( $prev_post )): ?>
 				
-					<a class="post-nav-prev" title="<?php _e('Previous post', 'fukasawa'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
-						<p>&larr; <?php _e('Previous post', 'fukasawa'); ?></p>
+					<a class="post-nav-prev" title="<?php _e('Previous post', 'naoto'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
+						<p>&larr; <?php _e('Previous post', 'naoto'); ?></p>
 					</a>
 				<?php endif; ?>
 				
 				<?php
 				if (!empty( $next_post )): ?>
 					
-					<a class="post-nav-next" title="<?php _e('Next post', 'fukasawa'); echo ': ' . esc_attr( get_the_title($next_post) ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">					
-						<p><?php _e('Next post', 'fukasawa'); ?> &rarr;</p>
+					<a class="post-nav-next" title="<?php _e('Next post', 'naoto'); echo ': ' . esc_attr( get_the_title($next_post) ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">					
+						<p><?php _e('Next post', 'naoto'); ?> &rarr;</p>
 					</a>
 			
 				<?php endif; ?>
@@ -157,7 +173,7 @@
 									                        
    	<?php endwhile; else: ?>
 
-		<p><?php _e("We couldn't find any posts that matched your query. Please try again.", "fukasawa"); ?></p>
+		<p><?php _e( 'We could not find any posts that matched your query. Please try again.', 'naoto'); ?></p>
 	
 	<?php endif; ?>    
 

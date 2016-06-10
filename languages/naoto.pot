@@ -1,0 +1,182 @@
+# Loco Gettext template
+msgid ""
+msgstr ""
+"Project-Id-Version: Naoto by techpress.rocks\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-23 14:45+0200\n"
+"PO-Revision-Date: 2016-02-23 14:45+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Revision-Date: Tue Feb 23 2016 14:45:18 GMT+0200 (Osteuropäische "
+"Zeit  )\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../content.php:19 ../single.php:92
+#, php-format
+msgid "Uploaded by: %s"
+msgstr ""
+
+#: ../content.php:26
+msgid ", "
+msgstr ""
+
+#: ../content.php:27
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: ../functions.php:19
+msgid "Footer Menu"
+msgstr ""
+
+#: ../functions.php:20
+msgid "Mobile Menu"
+msgstr ""
+
+#: ../functions.php:46
+msgid "Sidebar - Background Color"
+msgstr ""
+
+#: ../functions.php:51
+msgid "Social Sharing/Follow Button Color"
+msgstr ""
+
+#: ../functions.php:56
+msgid "Sidebar - Widget Titles Color"
+msgstr ""
+
+#: ../functions.php:61
+msgid "Sidebar - Widget Links Color"
+msgstr ""
+
+#: ../functions.php:66
+msgid "Sidebar - Main Menu Color"
+msgstr ""
+
+#: ../functions.php:71
+msgid "Sidebar - Main Menu Hover Color"
+msgstr ""
+
+#: ../functions.php:76
+msgid "Sidebar - Current Menu Color"
+msgstr ""
+
+#: ../functions.php:81
+msgid "Sidebar - Current Menu Indicator Color"
+msgstr ""
+
+#: ../functions.php:86
+msgid "Sidebar - Widget Separator Color"
+msgstr ""
+
+#: ../functions.php:91
+msgid "Sidebar - Searchfield Backgroundcolor"
+msgstr ""
+
+#: ../functions.php:96
+msgid "Sidebar - Searchfield Textcolor"
+msgstr ""
+
+#: ../functions.php:123
+msgid "Sticky Header - Background Color"
+msgstr ""
+
+#: ../functions.php:128
+msgid "Sticky Header - Text/Link Color"
+msgstr ""
+
+#: ../functions.php:153
+msgid "Show Sticky Header"
+msgstr ""
+
+#: ../functions.php:165
+msgid "Show Sticky Header - Only tick if you have a logo (75 px width)"
+msgstr ""
+
+#: ../functions.php:174
+msgid "Mobile Menu Toggle Colors"
+msgstr ""
+
+#: ../functions.php:180
+msgid "Mobile Menu Toggle - Background Color"
+msgstr ""
+
+#: ../functions.php:185
+msgid "Mobile Menu Toggle - Text Color"
+msgstr ""
+
+#: ../functions.php:210
+msgid "Social Follow Links"
+msgstr ""
+
+#: ../functions.php:216
+msgid "Instagram"
+msgstr ""
+
+#: ../functions.php:221
+msgid "Pinterest"
+msgstr ""
+
+#: ../functions.php:226
+msgid "Facebook"
+msgstr ""
+
+#: ../functions.php:231
+msgid "Twitter"
+msgstr ""
+
+#: ../functions.php:236
+msgid "Tumblr"
+msgstr ""
+
+#: ../functions.php:241
+msgid "Google+"
+msgstr ""
+
+#: ../header.php:96 ../header.php:152 ../header.php:210
+msgid "Follow Us"
+msgstr ""
+
+#: ../header.php:163
+msgid "Click to view the navigation"
+msgstr ""
+
+#: ../header.php:176
+msgid "Menu"
+msgstr ""
+
+#: ../header.php:177
+msgid "Close"
+msgstr ""
+
+#: ../single.php:68
+msgid "Pages:"
+msgstr ""
+
+#: ../single.php:83
+msgid "In"
+msgstr ""
+
+#: ../single.php:136 ../single.php:137
+msgid "Previous post"
+msgstr ""
+
+#: ../single.php:144 ../single.php:145
+msgid "Next post"
+msgstr ""
+
+#: ../single.php:160
+msgid "We could not find any posts that matched your query. Please try again."
+msgstr ""

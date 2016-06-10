@@ -1,17 +1,42 @@
 /*
- Theme Name:   Naoto by techpress.rocks
- Theme URI:    http://techpress.rocks/
- Description:  Child theme of Fukasawa by Anders Norén (http://www.andersnoren.se/themes/fukasawa/)
- Author:       AFB
- Author URI:   http://techpress.rocks/
- Template:     fukasawa
- Version:      1.0.0
- License:      GNU General Public License v2 or later
- License URI:  http://www.gnu.org/licenses/gpl-2.0.html
-*/
+	Theme Name:   Naoto by techpress.rocks
+	Theme URI:    http://techpress.rocks/
+	Description:  Child theme of Fukasawa by Anders Norén (http://www.andersnoren.se/themes/fukasawa/)
+	Author:       Andrew F. Burton
+	Author URI:   http://techpress.rocks/
+	Template:     fukasawa
+	Version:      1.0.0
+	License:      GNU General Public License v2 or later
+	License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+	Tags:         user generated content, sticky headerbar, child theme, fukasawa
+	Text Domain:  naoto
+	
+	All files, unless otherwise stated, are released under the GNU General Public License
+	version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+-----------------------------------------------------------------------------------
+
+	1.	Logo - Sidebar (centering)
+	2.  Sticky Header Bar, including Primary Menu + Social Follow buttons
+	3.	Frontpage Content Styling + Frontpage Sharing
+	4.	Social Follow & Sharing Buttons: Frontpage + Sticky Header Bar + Mobile Menu
+	5.	Sidebar Social Follow Buttons
+	6.  Social Sharing Buttons - Single Post (including Buttons Image Overlay)
+	7.	Single Post - Post Meta above post
+	8.	Footer Menu
+	9.	Media Queries for 1000px + 800px
+
+----------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------------- */
+/*	1. Logo - Sidebar (centering)
+/* -------------------------------------------------------------------------------- */
 .blog-logo img {
     margin: 0 auto;
 }
+/* -------------------------------------------------------------------------------- */
+/*	2. Sticky Header Bar, including Primary Menu
+/* -------------------------------------------------------------------------------- */
 .sticky {
     position: fixed;
     width: 100%;
@@ -35,6 +60,15 @@
 	float: left;
 	width: 35px;
 }
+.sticky-navbar h1.blog-title {
+    display: inline;
+    float: left;
+    margin-right: 10px;
+	padding-bottom: 5px;
+}
+.sticky-navbar h1.blog-title a {
+	line-height: 100%;
+}	
 .main-menu.stickymenu {
 	float: left;
 	margin-top: 10px;
@@ -61,38 +95,15 @@
 .stickymenu.main-menu li:last-child:after {
 	content: " ";
 }
-.nav-toggle.active {
-    background: red;
-}
-.nav-toggle.active p {
-    color: green;
-}
-.nav-toggle.active .bar {
-    background: green;
-}
-.ugc-project-sharingsticky {
-	display: inline-block;
-	float: right;
-	margin-top: 8px;
-	color: #999;
-}	
-.sharingsticky-icons {
-	display: inline-block;
-    float: right;
-	margin-top: -2px;
-	min-width: 180px;
-	padding-left: 15px;
-}
-.ugc-project-mobile-follow {
-	display: none;
-}
-/*Frontpage - Uploader name*/
-.fukasawa-techpress-uploadername {
+/* -------------------------------------------------------------------------------- */
+/*	3. Frontpage Content Styling (including custom field uploader name, category)
+/* -------------------------------------------------------------------------------- */
+.naoto-techpress-uploadername {
 	font-size: 14px;
 	padding-top: 5px;
 	text-align: center;
 }
-.fukasawa-techpress-category {
+.naoto-techpress-category {
 	font-size: 14px;
 	padding-bottom: 15px;
 	padding-top: 5px;
@@ -101,108 +112,220 @@
 .posts .post-title, .post-excerpt p {
 	text-align: center;
 }
-/*UGC Follow Buttons & Sharing Buttons Frontpage*/
-.ugc-project-instagram:before {
+/* ----------------------------------------------------------------------------------- */
+/*	4. Frontpage - Sharing Buttons (inside post container, positioning and default color)
+/* ----------------------------------------------------------------------------------- */
+.naoto-frontpage-sharing {
+	padding: 0;
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align:justify;
+	padding-top: 15px;
+	height: 40px;
+}
+.naoto-frontpage-sharing a {
+	display: inline-block;
+	color: #8fb9d4;
+	font-size: 24px;
+}
+.naoto-frontpage-sharing:after { 
+	content:' ';
+	display:inline-block;
+	width: 100%;
+	height: 0
+}
+.naoto-sharing-hidden {
+	display: none !important;
+}	
+/* -------------------------------------------------------------------------------- */
+/*	4. Sidebar - Social Follow Buttons (positioning and default color)
+/* -------------------------------------------------------------------------------- */
+.naoto-frontpage-follow {
+	text-align:justify;
+	padding-top: 15px;
+	padding-bottom: 7px;
+	padding-left: 0%;
+	padding-right: 0%;
+}
+.naoto-frontpage-follow a {
+	display: inline-block;
+	color: #8fb9d4;
+	font-size: 26px;
+	padding: 0 1px;
+}
+.naoto-frontpage-follow:after { 
+	content:' '; 
+	display: inline-block;
+	width: 100%;
+	height: 0
+}
+/* -------------------------------------------------------------------------------- */
+/*	4. Frontpage & Sidebar - Social Sharing & Social Follow Buttons (with Hover)
+/* -------------------------------------------------------------------------------- */
+.naoto-instagram:before {
 	font-family: FontAwesome;
 	content: "\f16d";	
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-	font-size: 26px;
 }
-.ugc-project-instagram:hover:before {
+.naoto-instagram:hover:before {
     color: #125688;
 }
-.ugc-project-pinterest:before {
+.naoto-pinterest:before {
 	font-family: FontAwesome;
 	content: "\f0d2";	
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-	font-size: 26px;
 }
-.ugc-project-pinterest:hover:before {
+.naoto-pinterest:hover:before {
     color: #bd081c;
 }
-.ugc-project-facebook:before {
+.naoto-facebook:before {
 	font-family: FontAwesome;
 	content: "\f230";	
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-	font-size: 26px;
 }
-.ugc-project-facebook:hover:before {
+.naoto-facebook:hover:before {
     color: #3b5998;
 }
-.ugc-project-twitter:before {
+.naoto-twitter:before {
 	font-family: FontAwesome;
 	content: "\f099";	
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-	font-size: 26px;
 }
-.ugc-project-twitter:hover:before {
+.naoto-twitter:hover:before {
     color: #55acee;
 }
-.ugc-project-tumblr:before {
+.naoto-tumblr:before {
 	font-family: FontAwesome;
 	content: "\f173";	
-    display: inline-block;
-    float: left;
-    margin-right: 10px;
-	font-size: 26px;
 }
-.ugc-project-tumblr:hover:before {
+.naoto-tumblr:hover:before {
     color: #35465c;
 }
-.ugc-project-google:before {
+.naoto-google:before {
 	font-family: FontAwesome;
 	content: "\f0d5";	
-    display: inline-block;
-    float: left;
-	font-size: 26px;
 }
-.ugc-project-google:hover:before {
+.naoto-google:hover:before {
     color: #dd4b39;
 }
-.ugc-project-frontpage-sharing {
-	padding-top: 15px;
-	display: -webkit-flex; /* Safari */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    display: flex;
- 	justify-content: center;
-	padding-bottom: 7px;
-	width: 100%;
+.naoto-reddit:before {
+	font-family: FontAwesome;
+	content: "\f281";	
 }
-.sidebar ul.ugc-project-frontpage-sharing {
-	display: block;
+.naoto-reddit:hover:before {
+    color: #ff4500;
 }
-.ugc-project-frontpage-sharing li a {
-	display: inline;
+.naoto-stumbleupon:before {
+	font-family: FontAwesome;
+	content: "\f1a4";	
+}
+.naoto-stumbleupon:hover:before {
+    color: #eb4924;
+}
+.naoto-linkedin:before {
+	font-family: FontAwesome;
+	content: "\f0e1";	
+}
+.naoto-linkedin:hover:before {
+    color: #0077b5;
+}
+.naoto-vk:before {
+	font-family: FontAwesome;
+	content: "\f189";	
+}
+.naoto-vk:hover:before {
+    color: #45668e;
+}
+.naoto-rss:before {
+	font-family: FontAwesome;
+	content: "\f09e";	
+}
+.naoto-rss:hover:before {
+    color: #f26522;
+}
+/*
+.naoto-etsy {
+	background: url(icons/naoto-etsy-24px.png) no-repeat;
+	width: 24px;
+	height: 24px;
+}
+.naoto-etsy:hover {
+    opacity: 0.5;
+}*/
+/* -------------------------------------------------------------------------------- */
+/*	4. Sticky Header Bar - Social Follow Icons
+/* -------------------------------------------------------------------------------- */
+.naoto-followsticky {
+	display: inline-block;
+	float: right;
+	margin-top: 8px;
+	color: #999;
+}	
+.followsticky-icons {
+	display: inline-block;
+    float: right;
+	min-width: 180px;
+	margin-left: 10px;
+	padding: 0;
+	padding-left: 0%;
+	padding-right: 0%;
+	text-align:justify;
+}
+.followsticky-icons a {
+	display: inline-block;
 	color: #8fb9d4;
+	font-size: 24px;
+	line-height: 24px;
 }
-.ugc-project-single-sharing {
+.followsticky-icons:after { 
+	content:' ';
+	display: inline-block;
+	width: 100%;
+	height: 0
+}
+/* -------------------------------------------------------------------------------- */
+/*	4. Mobile Menu - Social Follow Icons (< 800 px browser width)
+/* -------------------------------------------------------------------------------- */
+.naoto-mobile-follow {
+	display: none;
+}
+.naoto-mobile-follow-icons {
+	padding: 0 10%;
+	text-align:justify;
+	padding-top: 15px;
+	height: 40px;
+}
+.naoto-mobile-follow-icons a {
+	display: inline-block;
+	color: #8fb9d4;
+	font-size: 24px;
+}
+.naoto-mobile-follow-icons:after { 
+	content:' ';
+	display: inline-block;
+	width: 100%;
+	height: 0
+}
+/* -------------------------------------------------------------------------------- */
+/*	6. Single Post - Social Sharing Buttons (Buttons Image Overlay)
+/* -------------------------------------------------------------------------------- */
+.naoto-single-sharing {
 	float: right;
 	width: 100%;
 	list-style-type: none;
-}	
-.ugc-project-single-sharing a {
+}
+.naoto-single-sharing a {
 	display: inline;
 	color: #8fb9d4;
+	font-size: 48px;
 }	
-.single-portfoliooverlay div.ugc-project-single-sharing {
+.single-portfoliooverlay div.naoto-single-sharing {
     position: absolute;
-    top: 90%;
+    top: 85%;
 	width: 100%;
-	left: 5%;
+	left: 2%;
 	opacity: 0.7;
 }
-.single-portfoliooverlay div.ugc-project-single-sharing:hover {
+.single-portfoliooverlay div.naoto-single-sharing:hover {
     position: absolute;
-    top: 90%;
-	left: 5%;
+    top: 85%;
+	left: 2%;
 	opacity: 1;
 	-webkit-transition: border-bottom 1s ease-in-out;
 	-webkit-transition-duration: 0.4s;
@@ -210,68 +333,66 @@
 	-moz-transition-duration: 0.4s;	
 }
 .single-portfoliooverlay {
-  position: relative;
-  right: 0;
-  top: 0;
-  width: 100%;
-   height: 100%;
-  text-align: center;
+	position: relative;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
 }
-.ugc-project-single-pinterest:before {
+.naoto-single-pinterest:before {
 	font-family: FontAwesome;
 	content: "\f0d2";	
     display: inline-block;
     float: left;
     margin-right: 15px;
-	font-size: 48px;
 }
-.ugc-project-single-pinterest:hover:before {
+.naoto-single-pinterest:hover:before {
     color: #bd081c;
 }
-.ugc-project-single-facebook:before {
+.naoto-single-facebook:before {
 	font-family: FontAwesome;
 	content: "\f230";	
     display: inline-block;
     float: left;
     margin-right: 15px;
-	font-size: 48px;
 }
-.ugc-project-single-facebook:hover:before {
+.naoto-single-facebook:hover:before {
     color: #3b5998;
 }
-.ugc-project-single-twitter:before {
+.naoto-single-twitter:before {
 	font-family: FontAwesome;
 	content: "\f099";	
     display: inline-block;
     float: left;
     margin-right: 15px;
-	font-size: 48px;
 }
-.ugc-project-single-twitter:hover:before {
+.naoto-single-twitter:hover:before {
     color: #55acee;
 }
-.ugc-project-single-tumblr:before {
+.naoto-single-tumblr:before {
 	font-family: FontAwesome;
 	content: "\f173";	
     display: inline-block;
     float: left;
     margin-right: 15px;
-	font-size: 48px;
 }
-.ugc-project-single-tumblr:hover:before {
+.naoto-single-tumblr:hover:before {
     color: #35465c;
 }
-.ugc-project-single-google:before {
+.naoto-single-google:before {
 	font-family: FontAwesome;
 	content: "\f0d5";	
     display: inline-block;
     float: left;
-	font-size: 48px;
+	margin-right: 15px;
 }
-.ugc-project-single-google:hover:before {
+.naoto-single-google:hover:before {
     color: #dd4b39;
 }
-/*UGC Single Post - Post Meta above post*/
+/* -------------------------------------------------------------------------------- */
+/*	7. Single Post - Post Meta above post
+/* -------------------------------------------------------------------------------- */
 .post-meta-bottom {
     margin-top: 0;
 }
@@ -287,8 +408,16 @@
     margin-bottom: 18px;
 	margin-top: 18px;
 }
-/*Footer Menu*/
+/* -------------------------------------------------------------------------------- */
+/*	8. Footer Menu
+/* -------------------------------------------------------------------------------- */
+#naoto-footer {
+	background-color: #FFF !important;
+	width: 100%;
+	min-height: 250px;
+}
 ul.bottomnav {
+	padding-top: 20px;
 	padding-left: 20px;
 }
 ul.bottomnav li {
@@ -300,6 +429,9 @@ ul.menu li ul.sub-menu li {
     float: none;
     padding-left: 5px;
 }
+/* -------------------------------------------------------------------------------- */
+/*	9. Media Queries for 1000px + 800px
+/* -------------------------------------------------------------------------------- */
 @media (max-width: 1000px) {
 	.sidebar {
 		width: 230px;
@@ -328,9 +460,9 @@ ul.menu li ul.sub-menu li {
 	.main-menu, .widgets, .credits {
 		display: none;
 	}
-	/* structure */
-	
-	.wrapper { margin-left: 0; }
+	.wrapper { 
+		margin-left: 0; 
+	}
 	.mobile-navigation {
 		margin-bottom: 10px;
 	}	
@@ -361,19 +493,19 @@ ul.menu li ul.sub-menu li {
 		max-width: 90%; 
 		margin: 5% auto;
 	}
-	.ugc-project-mobile-follow {
+	.naoto-mobile-follow {
 		display: block;
 		text-align: center;
 		padding-top: 15px;
+		padding-bottom: 15px;
 		color: #999;
 	}
-	.ugc-project-mobile-follow ul {
-	padding-top: 15px;
-	display: -webkit-flex; /* Safari */
-    -webkit-justify-content: center; /* Safari 6.1+ */
-    display: flex;
- 	justify-content: center;
-	padding-bottom: 7px;
-	width: 100%;	
-}
+	#naoto-footer {
+		min-height: 50px;
+	}
+	.blog-title {
+		margin-right: 0;
+		text-align: center;
+		padding-top: 10px;
+	}
 }
