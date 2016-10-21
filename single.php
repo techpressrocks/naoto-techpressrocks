@@ -57,7 +57,7 @@
 
 			<div class="single-portfoliooverlay featured-media">
 				<div class="naoto-single-sharing">
-					<span><a class="naoto-single-pinterest" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php echo $image;?>&description=<?php the_title();?>" target="_blank" title="Pin it"></a></span>
+					<span><a class="naoto-single-pinterest" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php if(function_exists('the_post_thumbnail')) echo wp_get_attachment_url(get_post_thumbnail_id()); ?>&description=<?php the_title();?>" target="_blank" title="Pin it"></a></span>
 					<span><a class="naoto-single-facebook" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>" target="_blank" title="Share on Facebook!"></a></span>	
 					<span><a class="naoto-single-twitter" href="http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank" title="Tweet this page on Twitter"></a></span>
 					<span><a class="naoto-single-tumblr" href="http://www.tumblr.com/share/link?url=<?php the_permalink(); ?>&name=<?php the_title(); ?>&description=<?php the_title(); ?>" target="_blank" title="Share this page on Tumblr"></a></span>
