@@ -13,7 +13,7 @@ add_action( 'after_setup_theme', 'naoto_theme_setup' );
 
 function naoto_theme_setup() {
 	//Load Naoto Customize Class
-	require_once( get_stylesheet_directory() . '/class.nato.customizer.php' );
+	require_once( get_stylesheet_directory() . '/class.naoto.customizer.php' );
 	//Make Naoto translation ready
 	load_child_theme_textdomain( 'naoto', get_stylesheet_directory() . '/languages' );
 	//Register additional menus - footer and mobile
@@ -60,8 +60,10 @@ function naoto_sharing_links() {
 	?>		
 	<div class="naoto-frontpage-sharing">
 	
-	<?php $sharing_link_recommendthis = ( 1 == get_theme_mod( 'sharing_link_recommendthis' ) ) ? '' : 'naoto-sharing-hidden' ?>
-		<span class="<?php echo $sharing_link_recommendthis; ?>"><?php if( function_exists('dot_irecommendthis') ) dot_irecommendthis(); ?></span>
+	<?php if( function_exists('dot_irecommendthis') ) { ?>
+		<?php $sharing_link_recommendthis = ( 1 == get_theme_mod( 'sharing_link_recommendthis' ) ) ? '' : 'naoto-sharing-hidden' ?>
+		<span class="<?php echo $sharing_link_recommendthis; ?>"><?php dot_irecommendthis(); ?></span>
+	<?php } ?>	
 
 	<?php $sharing_link_pinterest = ( 1 == get_theme_mod( 'sharing_link_pinterest' ) ) ? '' : 'naoto-sharing-hidden' ?>	
 		<a class="naoto-pinterest <?php echo $sharing_link_pinterest; ?>" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php echo $image;?>&description=<?php the_title();?>" target="_blank" title="<?php _e( 'Pin it', 'naoto'); ?>"></a>
@@ -116,13 +118,56 @@ function naoto_follow_links() {
 	if ( get_theme_mod( 'social_follow_googleplus' ) ) { ?>
 		<a class="naoto-google" href="<?php echo esc_url ( get_theme_mod( 'social_follow_googleplus' ) ); ?>" title="Follow us on Google+!"></a>
 	<?php }	
+	if ( get_theme_mod( 'social_follow_linkedin' ) ) { ?>
+		<a class="naoto-linkedin" href="<?php echo esc_url ( get_theme_mod( 'social_follow_linkedin' ) ); ?>" title="Follow us on Google+!"></a>
+	<?php }	
 	if ( get_theme_mod( 'social_follow_deviantart' ) ) { ?>
-		<a class="naoto-google" href="<?php echo esc_url ( get_theme_mod( 'social_follow_linkedin' ) ); ?>" title="Follow us on Google+!"></a>
+		<a class="naoto-deviantart" href="<?php echo esc_url ( get_theme_mod( 'social_follow_deviantart' ) ); ?>" title="Follow us on Google+!"></a>
 	<?php }	
 	if ( get_theme_mod( 'social_follow_dribble' ) ) { ?>
-		<a class="naoto-google" href="<?php echo esc_url ( get_theme_mod( 'social_follow_dribble' ) ); ?>" title="Follow us on Google+!"></a>
+		<a class="naoto-dribble" href="<?php echo esc_url ( get_theme_mod( 'social_follow_dribble' ) ); ?>" title="Follow us on Google+!"></a>
 	<?php }						
 	if ( get_theme_mod( 'social_follow_rss' ) ) { ?>
 		<a class="naoto-rss" href="<?php echo esc_url ( get_theme_mod( 'social_follow_rss' ) ); ?>" title="Subscribe to our feed!"></a>
 	<?php }	
-}	
+}
+
+function naoto_single_sharing_links() {
+	?>		
+	<div class="naoto-single-sharing">
+	
+	<?php if( function_exists('dot_irecommendthis') ) { ?>
+		<?php $sharing_link_recommendthis = ( 1 == get_theme_mod( 'sharing_link_recommendthis' ) ) ? '' : 'naoto-sharing-hidden' ?>
+		<span class="irecommendthis <?php echo $sharing_link_recommendthis; ?>"><?php dot_irecommendthis(); ?></span>
+	<?php } ?>	
+
+	<?php $sharing_link_pinterest = ( 1 == get_theme_mod( 'sharing_link_pinterest' ) ) ? '' : 'naoto-sharing-hidden' ?>	
+		<a class="naoto-single-pinterest <?php echo $sharing_link_pinterest; ?>" href="http://pinterest.com/pin/create/button/?url=<?php the_permalink();?>&media=<?php echo $image;?>&description=<?php the_title();?>" target="_blank" title="<?php _e( 'Pin it', 'naoto'); ?>"></a>
+		
+	<?php $sharing_link_facebook = ( 1 == get_theme_mod( 'sharing_link_facebook' ) ) ? '' : 'naoto-sharing-hidden' ?>
+		<a class="naoto-single-facebook <?php echo $sharing_link_facebook; ?>" href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>" target="_blank" title="<?php _e( 'Share on Facebook!', 'naoto'); ?>"></a>
+		
+	<?php $sharing_link_twitter = ( 1 == get_theme_mod( 'sharing_link_twitter' ) ) ? '' : 'naoto-sharing-hidden' ?>	
+		<a class="naoto-single-twitter <?php echo $sharing_link_twitter; ?>" href="http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank" title="<?php _e( 'Tweet this!', 'naoto'); ?>"></a>
+	
+	<?php $sharing_link_tumblr = ( 1 == get_theme_mod( 'sharing_link_tumblr' ) ) ? '' : 'naoto-sharing-hidden' ?>		
+		<a class="naoto-single-tumblr <?php echo $sharing_link_tumblr; ?>" href="http://tumblr.com/widgets/share/tool?canonicalUrl=<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" target="_blank" title="<?php _e( 'Share this page on Tumblr!', 'naoto'); ?>"></a>
+
+	<?php $sharing_link_googleplus = ( 1 == get_theme_mod( 'sharing_link_googleplus' ) ) ? '' : 'naoto-sharing-hidden' ?>		
+		<a class="naoto-single-google <?php echo $sharing_link_googleplus; ?>" href="https://plus.google.com/share?url=<?php the_permalink(); ?>"onclick="javascript:window.open(this.href,
+		'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false; "title="<?php _e( 'Share on Google+!', 'naoto'); ?>"></a>
+
+	<?php $sharing_link_reddit = ( 1 == get_theme_mod( 'sharing_link_reddit' ) ) ? '' : 'naoto-sharing-hidden' ?>	
+		<a class="naoto-single-reddit <?php echo $sharing_link_reddit; ?>" href="http://www.reddit.com/submit?url<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" title="<?php _e( 'Share this page on Reddid!', 'naoto'); ?>"></a>
+
+	<?php $sharing_link_stumbleupon = ( 1 == get_theme_mod( 'sharing_link_stumbleupon' ) ) ? '' : 'naoto-sharing-hidden' ?>	
+		<a class="naoto-single-stumbleupon <?php echo $sharing_link_stumbleupon; ?>" href="http://www.stumbleupon.com/submit?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" title="<?php _e( 'Share this page on Stumbleupon!', 'naoto'); ?>"></a>
+
+	<?php $sharing_link_linkedin = ( 1 == get_theme_mod( 'sharing_link_linkedin' ) ) ? '' : 'naoto-sharing-hidden' ?>	
+		<a class="naoto-single-linkedin <?php echo $sharing_link_stumbleupon; ?>" href="http://www.linkedin.com/shareArticle?mini=true&<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=<?php site_url(); ?>" target="_blank" title="<?php _e( 'Share this page on LinkedIn!', 'naoto'); ?>"></a>
+		
+	<?php $sharing_link_vk = ( 1 == get_theme_mod( 'sharing_link_vk' ) ) ? '' : 'naoto-sharing-hidden' ?>		
+		<a class="naoto-single-vk <?php echo $sharing_link_vk; ?>" href="http://vk.com/share.php?url=<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" target="_blank" title="<?php _e( 'Share on VK!', 'naoto'); ?>"></a>
+	</div>
+	<?php
+}					

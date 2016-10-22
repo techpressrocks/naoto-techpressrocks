@@ -19,6 +19,18 @@ class Naoto_Customize {
     * @since Naoto 1.0
     */
 	public static function register ( $wp_customize ) {
+		$wp_customize->add_section( 'naoto_logo_section' , array(
+		    'title'       => __( 'Naoto - Logo Upload', 'naoto' ),
+		    'description' => __('<h3>Upload a logo to replace the default site title in the sidebar/header. Suggested size: 125px</h3>', 'naoto'),
+		) );
+		$wp_customize->add_setting( 'naoto_logo', 
+			array( 'sanitize_callback' => 'esc_url_raw'
+		) );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fukasawa_logo', array(
+		    'label'    => __( 'Logo', 'naoto' ),
+		    'section'  => 'naoto_logo_section',
+		    'settings' => 'naoto_logo',
+		) ) );		
 		$colors = array();
 		$colors[] = array(
 		'slug'=> 'body_back_color', 
@@ -91,7 +103,7 @@ class Naoto_Customize {
 				$color['slug'], array(
 					'default' => $color['default'],
 					'capability' => 'edit_theme_options',
-					'transport' => 'postMessage',
+					/*'transport' => 'postMessage',*/
 					'sanitize_callback' => 'sanitize_hex_color'
 				)
 			);
@@ -148,8 +160,8 @@ class Naoto_Customize {
 		));
 		$wp_customize->add_setting('show_sticky_header', array(
 			'default'    => 0,
-			'capability' => 'edit_theme_options', /*cannot add checkbox sanitize here because of separate js file for the sticky*/
-			/*'sanitize_callback' => 'naoto_sanitize_checkbox'*/
+			'capability' => 'edit_theme_options', /*cannot add transport post message here because of the js for the sticky header*/
+			'sanitize_callback' => 'absint'
 		));	
 		$wp_customize->add_control(
 			new WP_Customize_Control(
@@ -259,8 +271,8 @@ class Naoto_Customize {
 				$sharinglink['slug'], array(
 					'default' => $sharinglink['default'],
 					'capability' => 'edit_theme_options',
-					'transport' => 'postMessage'
-					/*'sanitize_callback' => 'naoto_sanitize_checkbox' --- not saving checkbox state*/
+					'transport' => 'postMessage',
+					'sanitize_callback' => 'absint'
 				)
 			);
 			$wp_customize->add_control(
@@ -279,8 +291,7 @@ class Naoto_Customize {
 		$wp_customize->add_setting('frontpage_sharing_size', array(
 			'default'    => '24px',
 			'capability' => 'edit_theme_options',
-			'transport' => 'postMessage'
-			/*'sanitize_callback' => 'naoto_sanitize_text' --- prevents postMessage to work */
+			'sanitize_callback' => 'sanitize_text_field'
 		));	
 		$wp_customize->add_control(
 			new WP_Customize_Control(
@@ -304,7 +315,7 @@ class Naoto_Customize {
 				$wp_customize,
 				'frontpage_sharing_padding',
 				array(
-					'label' => __('Padding in % - Social Sharing buttons (default: 0%)', 'naoto'),
+					'label' => __('Padding in % - Social Sharing buttons (default: 0)', 'naoto'),
 					'section' => 'social_sharing_links_section',
 					'settings' => 'frontpage_sharing_padding',
 				)
@@ -312,7 +323,8 @@ class Naoto_Customize {
 		);				
 		// Section - Social Follow Links
 		$wp_customize->add_section('social_follow_links_section' , array(
-			'title'     => __('Naoto - Follow Links', 'naoto')
+			'title'     => __('Naoto - Follow Links', 'naoto'),
+			'description'    =>  __('<h3>To remove a Social Follow link delete the text field completely, and to add a new link fill in the field corresponding to the service.</h3>', 'naoto'),
 		));	
 		$socialfollowlinks = array();
 		$socialfollowlinks[] = array(
@@ -376,8 +388,7 @@ class Naoto_Customize {
 				$socialfollowlink['slug'], array(
 					'default' => $socialfollowlink['default'],
 					'capability' => 'edit_theme_options',
-					'transport' => 'refresh',
-					/*'sanitize_callback' => 'naoto_sanitize_text'*/
+					'sanitize_callback' => 'esc_url_raw'
 				)
 			);
 			$wp_customize->add_control(
@@ -395,8 +406,7 @@ class Naoto_Customize {
 		$wp_customize->add_setting('frontpage_follow_size', array(
 			'default'    => '24px',
 			'capability' => 'edit_theme_options',
-			'transport' => 'postMessage',
-			'sanitize_callback' => 'naoto_sanitize_text'
+			'sanitize_callback' => 'sanitize_text_field'
 		));	
 		$wp_customize->add_control(
 			new WP_Customize_Control(
@@ -411,24 +421,24 @@ class Naoto_Customize {
 		);
 		$wp_customize->add_setting('frontpage_follow_padding', array(
 			'default'    => '0',
-			'capability' => 'edit_theme_options'
-			/*'transport' => 'postMessage',*/
-			/*'sanitize_callback' => 'naoto_sanitize_text'*/
+			'capability' => 'edit_theme_options',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'naoto_sanitize_text'
 		));	
 		$wp_customize->add_control(
 			new WP_Customize_Control(
 				$wp_customize,
 				'frontpage_follow_padding',
 				array(
-					'label' => __('Padding in % - Social Follow buttons (default: 0%)', 'naoto'),
+					'label' => __('Padding in % - Social Follow buttons (default: 0)', 'naoto'),
 					'section' => 'social_follow_links_section',
 					'settings' => 'frontpage_follow_padding',
 				)
 			)
 		);					
-		// Section - Mobile Menu Toggle
-		$wp_customize->add_section('mobile_toggle_section' , array(
-			'title'     => __('Naoto - Mobile Menu Toggle Colors', 'naoto'),
+		// Section - Mobile Menu
+		$wp_customize->add_section('mobile_menu_section' , array(
+			'title'     => __('Naoto - Mobile Menu Colors', 'naoto'),
 			'description' => __('<h2>Mobile Menu Toggle Colors</h2>If you start changing colors (see <b>Naoto - Color Options</b>), you might also have to change the colors of the <b>Mobile Menu Toggle</b>. You can do this here.', 'naoto')
 		));	
 		$mobilecolors = array();
@@ -442,13 +452,18 @@ class Naoto_Customize {
 		'default' => '#FFF',
 		'label' => __('Mobile Menu Toggle - Text Color', 'naoto')
 		);	
+		$mobilecolors[] = array(
+		'slug'=> 'mobile_menu_color', 
+		'default' => '#999',
+		'label' => __('Mobile Menu - Text Color', 'naoto')
+		);		
 		foreach( $mobilecolors as $mobilecolor ) {
 			// SETTINGS
 			$wp_customize->add_setting(
 				$mobilecolor['slug'], array(
 					'default' => $mobilecolor['default'],
 					'capability' => 'edit_theme_options',
-					'transport' => 'postMessage',
+					/*'transport' => 'postMessage',*/
 					'sanitize_callback' => 'sanitize_hex_color'
 				)
 			);
@@ -458,7 +473,7 @@ class Naoto_Customize {
 					$wp_customize,
 					$mobilecolor['slug'], 
 					array('label' => $mobilecolor['label'], 
-					'section' => 'mobile_toggle_section',
+					'section' => 'mobile_menu_section',
 					'settings' => $mobilecolor['slug'])
 				)
 			);
@@ -496,14 +511,14 @@ class Naoto_Customize {
       <style type="text/css">
            <?php self::generate_css('body', 'background', 'body_back_color'); ?> 
            <?php self::generate_css('body a', 'color', 'body_link_color'); ?>
-		   <?php self::generate_css('.sidebar:before', 'background', 'sidebar_back_color'); ?>
+		   <?php self::generate_css('.naoto-sidebar', 'background-color', 'sidebar_back_color'); ?>
 		   <?php self::generate_css('.naoto-frontpage-sharing a, .naoto-single-sharing a, .naoto-frontpage-follow a, .followsticky-icons a, .naoto-mobile-follow-icons a', 'color', 'social_button_color'); ?>
 		   <?php self::generate_css('.widget-title', 'color', 'sidebar_title_color'); ?>
 		   <?php self::generate_css('.widget-content a, .widget-content li a, .main-menu a:hover, .main-menu .current-menu-item > a, .main-menu .current_page_item > a', 'color', 'sidebar_link_color'); ?>
 		   <?php self::generate_css('.main-menu a', 'color', 'sidebar_menu_color'); ?>
 		   <?php self::generate_css('.main-menu a:hover', 'color', 'sidebar_menu_color_hover'); ?>
-           <?php self::generate_css('.main-menu .current-menu-item:before, .main-menu .current_page_item:before', 'background', 'sidebar_current_menu_indicator'); ?>
-		   <?php self::generate_css('.main-menu a:hover, .main-menu .current-menu-item > a, .main-menu .current_page_item > a', 'background', 'sidebar_current_menu'); ?>
+           <?php self::generate_css('.main-menu .current-menu-item:before, .main-menu .current_page_item:before', 'color', 'sidebar_current_menu_indicator'); ?>
+		   <?php self::generate_css('.main-menu a:hover, .main-menu .current-menu-item > a, .main-menu .current_page_item > a', 'color', 'sidebar_current_menu'); ?>
 		   <?php self::generate_css('.main-menu:before, .widgets:before, .widget + .widget:before, .credits:before', 'background', 'sidebar_widget_separator'); ?>
 		   <?php self::generate_css('.search-field', 'background', 'sidebar_searchfield_back'); ?>
 		   <?php self::generate_css('.search-field', 'color', 'sidebar_searchfield_color'); ?>
@@ -511,12 +526,18 @@ class Naoto_Customize {
 		   <?php self::generate_css('.main-menu.stickymenu a, .naoto-followsticky', 'color', 'sticky_header_color'); ?>
 		   
 		   <?php self::generate_css('.followsticky-icons a', 'font-size', 'followsize_sticky_header'); ?>
-		   <?php self::generate_css('.followsticky-icons a', 'line-height', 'followsize_sticky_header'); ?>
 		   <?php self::generate_css('.followsticky-icons', 'padding-left', 'followpadding_sticky_header'); ?>
-		   <?php self::generate_css('.followsticky-icons', 'padding-right', 'followpadding_sticky_header'); ?>		   
+		   <?php self::generate_css('.followsticky-icons', 'padding-right', 'followpadding_sticky_header'); ?>		
+		   
 		   <?php self::generate_css('.nav-toggle.active', 'background', 'mobile_toggle_background'); ?>
 		   <?php self::generate_css('.nav-toggle.active p', 'color', 'mobile_toggle_color'); ?>
+		   <?php self::generate_css('.nav-toggle.active .bar', 'background', 'mobile_toggle_color'); ?>
 		   
+			<?php self::generate_css('.nav-toggle p', 'color', 'mobile_menu_color'); ?>
+			<?php self::generate_css('.nav-toggle .bar', 'background', 'mobile_menu_color'); ?>
+			
+			<?php self::generate_css('.naoto-mobile-follow', 'color', 'mobile_menu_color'); ?>
+			
 			<?php self::generate_css('.naoto-frontpage-sharing', 'padding-left', 'frontpage_sharing_padding'); ?>
 			<?php self::generate_css('.naoto-frontpage-sharing', 'padding-right', 'frontpage_sharing_padding'); ?>
 			<?php self::generate_css('.naoto-frontpage-sharing a', 'font-size', 'frontpage_sharing_size'); ?>
@@ -582,6 +603,7 @@ class Naoto_Customize {
 
 // Setup the Theme Customizer settings and controls...
 add_action( 'customize_register' , array( 'Naoto_Customize' , 'register' ) );
+remove_action( 'customize_register' , array( 'fukasawa_Customize' , 'fukasawa_register' ) );
 
 // Output custom CSS to live site
 add_action( 'wp_head' , array( 'Naoto_Customize' , 'header_output' ) );
