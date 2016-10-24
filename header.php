@@ -17,10 +17,10 @@
 	<body <?php body_class(); ?>>
 	<?php if ( get_theme_mod( 'show_sticky_header' ) == 1 ) { ?>
 		<div class="sticky-navbar">
-			<?php if ( get_option( 'fukasawa_logo' ) ) { ?>
+			<?php if ( get_theme_mod( 'naoto_logo' ) ) { ?>
 			
 		        <a class="blog-logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>' rel='home'>
-		        	<img src='<?php echo esc_url( get_option( 'fukasawa_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
+		        	<img src='<?php echo esc_url( get_theme_mod( 'naoto_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
 		        </a>
 		
 			<?php } elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) { ?>
@@ -58,7 +58,8 @@
 			</span>
 		</div>
 		<?php } ?>
-		<div class="sidebar">
+		<div class="naoto-sidebar">
+		
 		<div class="mobile-navigation">
 	
 			<ul class="mobile-menu">
@@ -84,11 +85,11 @@
 				
 			 </ul>
 		</div> <!-- /mobile-navigation -->
-		
-			<?php if ( get_option( 'fukasawa_logo' ) ) : ?>
+	
+			<?php if ( get_theme_mod( 'naoto_logo' ) ) : ?>
 			
 		        <a class="blog-logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>' rel='home'>
-		        	<img src='<?php echo esc_url( get_option( 'fukasawa_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
+		        	<img src='<?php echo esc_url( get_theme_mod( 'naoto_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
 		        </a>
 		
 			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
