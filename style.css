@@ -34,6 +34,26 @@
 .blog-logo img {
     margin: 0 auto;
 }
+.naoto-sidebar {
+	width: 280px;
+	padding: 50px 40px;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0.71em;
+}
+
+.naoto-sidebar:before {
+	content: "";
+	display: block;
+	width: 280px;
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
 /* -------------------------------------------------------------------------------- */
 /*	2. Sticky Header Bar, including Primary Menu
 /* -------------------------------------------------------------------------------- */
@@ -183,6 +203,13 @@
 .naoto-facebook:hover:before {
     color: #3b5998;
 }
+.naoto-youtube:before {
+	font-family: FontAwesome;
+	content: "\f167";	
+}
+.naoto-youtube:hover:before {
+    color: #cd201f;
+}
 .naoto-twitter:before {
 	font-family: FontAwesome;
 	content: "\f099";	
@@ -231,6 +258,20 @@
 }
 .naoto-vk:hover:before {
     color: #45668e;
+}
+.naoto-deviantart:before {
+	font-family: FontAwesome;
+	content: "\f1bd";	
+}
+.naoto-deviantart:hover:before {
+    color: #05cc47;
+}
+.naoto-dribble:before {
+	font-family: FontAwesome;
+	content: "\f17d";	
+}
+.naoto-dribble:hover:before {
+    color: #444444;
 }
 .naoto-rss:before {
 	font-family: FontAwesome;
@@ -286,7 +327,7 @@
 	display: none;
 }
 .naoto-mobile-follow-icons {
-	padding: 0 10%;
+	padding: 0 25%;
 	text-align:justify;
 	padding-top: 15px;
 	height: 40px;
@@ -306,9 +347,14 @@
 /*	6. Single Post - Social Sharing Buttons (Buttons Image Overlay)
 /* -------------------------------------------------------------------------------- */
 .naoto-single-sharing {
-	float: right;
+	float: left;
 	width: 100%;
 	list-style-type: none;
+}
+.irecommendthis {
+	float: left;
+	margin-right: 15px;
+	line-height: 52px;
 }
 .naoto-single-sharing a {
 	display: inline;
@@ -317,14 +363,14 @@
 }	
 .single-portfoliooverlay div.naoto-single-sharing {
     position: absolute;
-    top: 85%;
+    bottom: 2%;
 	width: 100%;
 	left: 2%;
 	opacity: 0.7;
 }
 .single-portfoliooverlay div.naoto-single-sharing:hover {
     position: absolute;
-    top: 85%;
+    bottom: 2%;
 	left: 2%;
 	opacity: 1;
 	-webkit-transition: border-bottom 1s ease-in-out;
@@ -390,6 +436,46 @@
 .naoto-single-google:hover:before {
     color: #dd4b39;
 }
+.naoto-single-reddit:before {
+	font-family: FontAwesome;
+	content: "\f281";	
+    display: inline-block;
+    float: left;
+	margin-right: 15px;	
+}
+.naoto-single-reddit:hover:before {
+    color: #ff4500;
+}
+.naoto-single-stumbleupon:before {
+	font-family: FontAwesome;
+	content: "\f1a4";
+    display: inline-block;
+    float: left;
+	margin-right: 15px;		
+}
+.naoto-single-stumbleupon:hover:before {
+    color: #eb4924;
+}
+.naoto-single-linkedin:before {
+	font-family: FontAwesome;
+	content: "\f0e1";	
+    display: inline-block;
+    float: left;
+	margin-right: 15px;			
+}
+.naoto-single-linkedin:hover:before {
+    color: #0077b5;
+}
+.naoto-single-vk:before {
+	font-family: FontAwesome;
+	content: "\f189";
+    display: inline-block;
+    float: left;
+	margin-right: 15px;	
+}
+.naoto-single-vk:hover:before {
+    color: #45668e;
+}
 /* -------------------------------------------------------------------------------- */
 /*	7. Single Post - Post Meta above post
 /* -------------------------------------------------------------------------------- */
@@ -433,7 +519,19 @@ ul.menu li ul.sub-menu li {
 /*	9. Media Queries for 1000px + 800px
 /* -------------------------------------------------------------------------------- */
 @media (max-width: 1000px) {
-	.sidebar {
+	.naoto-sidebar { 
+		width: 100%;
+		padding: 30px 5%;
+		margin: 0;
+		border-bottom: 1px solid #ddd;
+		background-color: #fff;
+		font-size: 1em;
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.naoto-sidebar:before { content: none; }		
+	.naoto-sidebar {
 		width: 230px;
 		padding: 10px 10px;
 		position: absolute;
@@ -475,19 +573,19 @@ ul.menu li ul.sub-menu li {
 		width: 75px;
 		padding-top: 5px;
 	}	
-	.sidebar { 
+	.naoto-sidebar { 
 		width: 100%;
 		padding: 0;
 		margin: 0;
 		border-bottom: 1px solid #ddd;
-		background: #fff;
+		background-color: #fff;
 		font-size: 1em;
 		position: fixed;
 		z-index: 9999;
 		top: 0;
 		left: 0;
 	}
-	.sidebar:before { content: none; }
+	.naoto-sidebar:before { content: none; }
 	.content,
 	.content.thin { 
 		max-width: 90%; 

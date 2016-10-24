@@ -13,12 +13,12 @@
 	} );
 	wp.customize( 'body_link_color', function( value ) {
 		value.bind( function( newval ) {
-			$('body a').css('color', newval );
+			$('.content a').css('color', newval );
 		} );
 	} );
 	wp.customize( 'sidebar_back_color', function( value ) {
 		value.bind( function( newval ) {
-			$('.sidebar:before').css('background', newval );
+			$('.naoto-sidebar').css('background-color', newval );
 		} );
 	} );
 	
@@ -80,13 +80,13 @@
 	wp.customize( 'followsize_sticky_header', function( value ) {
 		value.bind( function( newval ) {
 			$('.followsticky-icons a').css('font-size', newval );
-			$('.followsticky-icons a').css('line-height', newval );
+			//$('.followsticky-icons a').css('line-height', newval );
 		} );
 	} );
 	wp.customize( 'followpadding_sticky_header', function( value ) {
 		value.bind( function( newval ) {
-			$('.followsticky-icons').css('padding-left', newval + '%' );
-			$('.followsticky-icons').css('padding-right', newval + '%' );
+			$('.followsticky-icons a').css('padding-left', newval + '%' );
+			$('.followsticky-icons a').css('padding-right', newval + '%' );
 		} );
 	} );	
 	wp.customize( 'mobile_toggle_background', function( value ) {
@@ -99,6 +99,11 @@
 			$('.nav-toggle.active p').css('color', newval );
 		} );
 	} );
+	wp.customize( 'mobile_toggle_color', function( value ) {
+		value.bind( function( newval ) {
+			$('.nav-toggle.active p').css('color', newval );
+		} );
+	} );	
 	wp.customize( 'frontpage_sharing_padding', function( value ) {
 		value.bind( function( newval ) {
 			$('.naoto-frontpage-sharing').css('padding-left', newval + '%' );
@@ -107,7 +112,7 @@
 	} );
 	wp.customize( 'frontpage_sharing_size', function( value ) {
 		value.bind( function( newval ) {
-			$('naoto-frontpage-sharing a').css('font-size', newval );
+			$('naoto-frontpage-sharing a').css('font-size', newval + 'px' );
 		} );
 	} );	
 	wp.customize( 'frontpage_follow_padding', function( value ) {
@@ -118,7 +123,7 @@
 	} );
 	wp.customize( 'frontpage_follow_size', function( value ) {
 		value.bind( function( newval ) {
-			$('.naoto-frontpage-follow a').css('font-size', newval );
+			$('.naoto-frontpage-follow a').css('font-size', newval + 'px' );
 		} );
 	} );	
 	//Sharing Buttons
@@ -126,18 +131,21 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing span' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing span' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing span' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing span' ).addClass( 'naoto-sharing-hidden' );
 			}
-
 		} );
 	} );
 	wp.customize( 'sharing_link_pinterest', function( value ) {
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-pinterest' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-pinterest' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-pinterest' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-pinterest' ).addClass( 'naoto-sharing-hidden' );
 			}
 
 		} );
@@ -146,8 +154,10 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-facebook' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-facebook' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-facebook' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-facebook' ).addClass( 'naoto-sharing-hidden' );
 			}
 		} );
 	} );	
@@ -155,18 +165,21 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-twitter' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-twitter' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-twitter' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-twitter' ).addClass( 'naoto-sharing-hidden' );
 			}
-
 		} );		
 	} );
 	wp.customize( 'sharing_link_tumblr', function( value ) {
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-tumblr' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-tumblr' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-tumblr' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-tumblr' ).addClass( 'naoto-sharing-hidden' );
 			}
 
 		} );		
@@ -175,28 +188,32 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-google' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-google' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-google' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-google' ).addClass( 'naoto-sharing-hidden' );
 			}
-
 		} );		
 	} );	
 	wp.customize( 'sharing_link_reddit', function( value ) {
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-reddit' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-reddit' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-reddit' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-reddit' ).addClass( 'naoto-sharing-hidden' );
 			}
-
 		} );		
 	} );	
 	wp.customize( 'sharing_link_stumbleupon', function( value ) {
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-stumbleupon' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-stumbleupon' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-stumbleupon' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-stumbleupon' ).addClass( 'naoto-sharing-hidden' );
 			}
 		} );		
 	} );
@@ -204,8 +221,10 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-linkedin' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-linkedin' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-linkedin' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-linkedin' ).addClass( 'naoto-sharing-hidden' );
 			}
 		} );		
 	} );	
@@ -213,10 +232,11 @@
 		value.bind( function( to ) {
 			if ( true === to ) {
 				$( '.naoto-frontpage-sharing a.naoto-vk' ).removeClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-vk' ).removeClass( 'naoto-sharing-hidden' );
 			} else {
 				$( '.naoto-frontpage-sharing a.naoto-vk' ).addClass( 'naoto-sharing-hidden' );
+				$( '.naoto-single-sharing a.naoto-single-vk' ).addClass( 'naoto-sharing-hidden' );
 			}
-
 		} );		
 	} );		
 } )( jQuery );
