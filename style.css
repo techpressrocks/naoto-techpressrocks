@@ -24,7 +24,8 @@
 	6.  Social Sharing Buttons - Single Post (including Buttons Image Overlay)
 	7.	Single Post - Post Meta above post
 	8.	Footer Menu
-	9.	Media Queries for 1000px + 800px
+	9.	Upload Form
+	10.	Media Queries for 1000px + 800px
 
 ----------------------------------------------------------------------------------- */
 
@@ -230,6 +231,13 @@
 }
 .naoto-google:hover:before {
     color: #dd4b39;
+}
+.naoto-wordpress:before {
+	font-family: FontAwesome;
+	content: "\f19a";	
+}
+.naoto-wordpress:hover:before {
+    color: #0087be;
 }
 .naoto-reddit:before {
 	font-family: FontAwesome;
@@ -497,6 +505,15 @@
 /* -------------------------------------------------------------------------------- */
 /*	8. Footer Menu
 /* -------------------------------------------------------------------------------- */
+aside#rfw-id {
+	padding-top: 25px;
+}	
+.bx-wrapper .bx-viewport {
+     left: 0px!important;
+}
+.widget_dock {
+     width: 100% !important;
+}
 #naoto-footer {
 	background-color: #FFF !important;
 	width: 100%;
@@ -516,7 +533,13 @@ ul.menu li ul.sub-menu li {
     padding-left: 5px;
 }
 /* -------------------------------------------------------------------------------- */
-/*	9. Media Queries for 1000px + 800px
+/*	9. Upload Form
+/* -------------------------------------------------------------------------------- */
+a#auiu-ft-upload-pickfiles, input.auiu-submit {
+      background: #ef88a8 !important;
+}
+/* -------------------------------------------------------------------------------- */
+/*	10. Media Queries for 1000px + 800px
 /* -------------------------------------------------------------------------------- */
 @media (max-width: 1000px) {
 	.naoto-sidebar { 

@@ -362,6 +362,11 @@ class Naoto_Customize {
 		'default' => 'https://plus.google.com/xxxx',
 		'label' => __('Google+', 'naoto')
 		);
+		$socialfollowlinks[] = array(	
+        'slug'=> 'social_follow_wordpress',
+		'default' => 'https://xxx.wordpress.com/',
+		'label' => __('WordPress', 'naoto')
+		);                                
 		$socialfollowlinks[] = array(
 		'slug'=> 'social_follow_linkedin', 
 		'default' => '',

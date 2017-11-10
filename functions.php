@@ -118,18 +118,21 @@ function naoto_follow_links() {
 	if ( get_theme_mod( 'social_follow_googleplus' ) ) { ?>
 		<a class="naoto-google" href="<?php echo esc_url ( get_theme_mod( 'social_follow_googleplus' ) ); ?>" title="Follow us on Google+!"></a>
 	<?php }	
+	if ( get_theme_mod( 'social_follow_wordpress' ) ) { ?>
+		<a class="naoto-wordpress" href="<?php echo esc_url ( get_theme_mod( 'social_follow_wordpress' ) ); ?>" title="Follow us on WordPress.com!"></a>
+	<?php }	
 	if ( get_theme_mod( 'social_follow_linkedin' ) ) { ?>
-		<a class="naoto-linkedin" href="<?php echo esc_url ( get_theme_mod( 'social_follow_linkedin' ) ); ?>" title="Follow us on Google+!"></a>
+		<a class="naoto-linkedin" href="<?php echo esc_url ( get_theme_mod( 'social_follow_linkedin' ) ); ?>" title="Follow us on LinkedIn!"></a>
 	<?php }	
 	if ( get_theme_mod( 'social_follow_deviantart' ) ) { ?>
-		<a class="naoto-deviantart" href="<?php echo esc_url ( get_theme_mod( 'social_follow_deviantart' ) ); ?>" title="Follow us on Google+!"></a>
+		<a class="naoto-deviantart" href="<?php echo esc_url ( get_theme_mod( 'social_follow_deviantart' ) ); ?>" title="Follow us on Deviantart!"></a>
 	<?php }	
 	if ( get_theme_mod( 'social_follow_dribble' ) ) { ?>
-		<a class="naoto-dribble" href="<?php echo esc_url ( get_theme_mod( 'social_follow_dribble' ) ); ?>" title="Follow us on Google+!"></a>
+		<a class="naoto-dribble" href="<?php echo esc_url ( get_theme_mod( 'social_follow_dribble' ) ); ?>" title="Follow us on Dribble"></a>
 	<?php }						
 	if ( get_theme_mod( 'social_follow_rss' ) ) { ?>
 		<a class="naoto-rss" href="<?php echo esc_url ( get_theme_mod( 'social_follow_rss' ) ); ?>" title="Subscribe to our feed!"></a>
-	<?php }	
+	<?php }		
 }
 
 function naoto_single_sharing_links() {
